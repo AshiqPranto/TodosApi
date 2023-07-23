@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      dotnet: 6.0
+  pre_build:
+    commands:
+      - dotnet restore TodosApi\TodosApi.csproj
+  build:
+    commands:
+      - dotnet build TodosApi\TodosApi.csproj
+  post_build:
+    commands:
+      - dotnet publish -c Release -o ./app/ TodosApi\TodosApi.csproj
+artifacts:
+  files:
+    - '**/*'
